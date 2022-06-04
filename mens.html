@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            font-family: sans-serif;
+        }
+        #cart{
+           
+            margin: auto;
+            display:grid;
+            gap: 30px;
+            grid-template-columns: repeat(2,1fr);
+            grid-template-rows: repeat(1,auto);
+            width: 80%;
+        }
+       
+
+        #cart>div>:nth-child(2){
+            font-size: 30px;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+        #cart>div>:nth-child(3){
+            color: gray;
+            font-size: 25px;
+            margin-left: 20px;
+            margin-top: -10px;
+            
+        }
+        #cart>div>div{
+            display: flex;
+            margin-top: -30px;
+            font-size: 20px;
+            
+        }
+        #cart>div>div>:nth-child(1){
+          margin-left: 20px;
+         
+          
+        }
+        #cart>div>div>:nth-child(2){
+           margin: auto;
+           text-decoration: line-through;
+           color: gray;
+           margin-left: 20px;
+        }
+        #cart>div>div>:nth-child(3){
+           margin: auto;
+           margin-right: 290px;
+           color: green;
+           font-weight: bold;
+          
+        }
+        #cart>div>img{
+            width: 100%;
+            height: 70%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="cart"></div>
+</body>
+</html>
+
+<script>
+   var cartData = [
+    {
+        imgUrl:"https://modone.com/eng_pm_Mens-hoodie-B702-black-5810_3.jpg",
+        cat:"Pause",
+        name:"Men Cotton Long Sleeve Shrung",
+        price:"₹359",
+        strikedOffPrice:"₹1,499",
+        discount:"-76%"
+    },
+    {
+        imgUrl:"https://cache.mrporter.com/variants/images/20346390236158136/in/w560_q60.jpg",
+        cat:"JUBINATION",
+        name:"Men Wool Sleeveless SWeater Pack Of 1",
+        price:"₹799",
+        strikedOffPrice:"₹1,499",
+        discount:"-47%"
+    },
+    
+];
+
+cartData.forEach(function(elem){
+    var prodiv=document.createElement("div");
+
+    var proimg=document.createElement("img");
+    proimg.setAttribute("src",elem.imgUrl);
+
+    var procat=document.createElement("p");
+    procat.innerText=elem.cat;
+
+    var proname=document.createElement("p");
+    proname.innerText=elem.name;
+
+    var pricediv=document.createElement("div");
+    var proprice=document.createElement("h2");
+    proprice.innerText=elem.price;
+    var strprice=document.createElement("p");
+    strprice.innerText=elem.strikedOffPrice;
+    var discount=document.createElement("p");
+    discount.innerText=elem.discount;
+    pricediv.append(proprice,strprice,discount);
+
+    prodiv.append(proimg,procat,proname,pricediv);
+    console.log(prodiv)
+
+    document.querySelector("#cart").append(prodiv);
+
+})
+
+</script>
